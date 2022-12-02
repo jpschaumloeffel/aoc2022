@@ -20,8 +20,9 @@ fn main() {
         current_calories += content_int;
     }
 
-    let max_value = elves.iter().max();
-    if max_value.is_some() {
-        println!("max calories is {}", max_value.unwrap());
-    }
+    // sort elves descending
+    elves.sort_by(|a, b| b.cmp(a));
+    println!("Part 1: #1 elf carrying {} calories", elves.get(0).unwrap());
+
+    println!("Part 2: Top 3 elves carrying {} calories", elves[..3].iter().sum::<i32>());
 }
