@@ -1,7 +1,6 @@
 use std::io::{self, BufRead};
 
 fn main() {
-
     let mut elves = vec![];
     let mut current_calories = 0;
 
@@ -24,5 +23,8 @@ fn main() {
     elves.sort_by(|a, b| b.cmp(a));
     println!("Part 1: #1 elf carrying {} calories", elves.get(0).unwrap());
 
-    println!("Part 2: Top 3 elves carrying {} calories", elves[..3].iter().sum::<i32>());
+    println!(
+        "Part 2: Top 3 elves carrying {} calories",
+        elves[..3].iter().sum::<i32>()
+    );
 }
