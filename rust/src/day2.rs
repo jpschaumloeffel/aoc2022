@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 use std::hash::Hash;
 
-
 #[derive(PartialEq, Eq, Copy, Clone, Hash, Debug)]
 enum RSPFigure {
     Rock,

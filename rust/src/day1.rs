@@ -1,4 +1,3 @@
-
 pub fn process(input_lines: impl IntoIterator<Item = Result<String, std::io::Error>>) {
     let mut elves = vec![];
     let mut current_calories = 0;
@@ -27,5 +26,3 @@ pub fn process(input_lines: impl IntoIterator<Item = Result<String, std::io::Err
         elves[..3].iter().sum::<i32>()
     );
 }
-
-
