@@ -13,16 +13,16 @@ pub fn process(input_lines: impl IntoIterator<Item = Result<String, std::io::Err
 
         println!("{:?} -- {:?}", p1, p2);
 
-        let common = common_char(vec![p1.to_string(), p2.to_string()]);
-
+        let common = common_char(&[p1, p2]);
         let priority = item_priority(common.unwrap());
         println!("common: {:?}, priority: {:?}", common, priority);
 
         priority_sum += priority;
 
+        // process groups of 3 elves each
         group_strings.push(content);
         if group_strings.len() == 3 {
-            let common_2 = common_char(group_strings.to_vec());
+            let common_2 = common_char(group_strings.as_slice());
             priority_sum_2 += item_priority(common_2.unwrap());
 
             group_strings = vec![];
@@ -33,12 +33,12 @@ pub fn process(input_lines: impl IntoIterator<Item = Result<String, std::io::Err
     println!("part 2: priority sum is {}", priority_sum_2);
 }
 
-fn common_char(strings: Vec<String>) -> Option<char> {
+fn common_char<T: AsRef<str>>(strings: &[T]) -> Option<char> {
     if strings.len() > 0 {
-        for char in strings[0].chars() {
+        for char in strings[0].as_ref().chars() {
             let mut failed = false;
             for s in strings[1..].iter() {
-                if s.find(char).is_none() {
+                if s.as_ref().find(char).is_none() {
                     failed = true;
                     break;
                 }
@@ -49,7 +49,6 @@ fn common_char(strings: Vec<String>) -> Option<char> {
             return Some(char);
         }
     }
-
     None
 }
 
