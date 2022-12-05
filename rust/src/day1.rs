@@ -1,12 +1,11 @@
-use std::io::{self, BufRead};
 
-fn main() {
+pub fn process(input_lines: impl IntoIterator<Item = Result<String, std::io::Error>>) {
     let mut elves = vec![];
     let mut current_calories = 0;
 
-    let stdin = io::stdin();
-    for line in stdin.lock().lines() {
+    for line in input_lines {
         let content = line.unwrap();
+
         if content == "" {
             // next elf
             elves.push(current_calories);
@@ -28,3 +27,5 @@ fn main() {
         elves[..3].iter().sum::<i32>()
     );
 }
+
+

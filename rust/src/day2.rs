@@ -1,9 +1,6 @@
 use std::collections::HashMap;
 use std::hash::Hash;
-use std::io::{self, BufRead};
 
-#[macro_use]
-extern crate lazy_static;
 
 #[derive(PartialEq, Eq, Copy, Clone, Hash, Debug)]
 enum RSPFigure {
@@ -142,15 +139,14 @@ fn score(fig_self: &RSPFigure, fig_opp: &RSPFigure) -> u32 {
     figure_score(&fig_self) + result_score(&result)
 }
 
-fn main() {
+pub fn process(input_lines: impl IntoIterator<Item = Result<String, std::io::Error>>) {
     // println!("debug RSP_RESULT_TABLES: {:?}", make_result_tables());
     // println!("debug RSP_FIGURE_TABLES: {:?}", make_figure_tables());
 
     let mut score_sum = 0;
     let mut score_sum_b = 0;
 
-    let stdin = io::stdin();
-    for line in stdin.lock().lines() {
+    for line in input_lines {
         let content = line.unwrap();
 
         let (figure_opp, figure_self) = parse_line(&content);
