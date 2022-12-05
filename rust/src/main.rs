@@ -4,6 +4,7 @@ use std::io::{BufRead, BufReader};
 
 #[macro_use]
 extern crate lazy_static;
+extern crate core;
 
 mod day1;
 mod day2;
