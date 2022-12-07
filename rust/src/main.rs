@@ -10,6 +10,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -35,5 +36,7 @@ fn main() {
         day3::process(input_lines);
     } else if args.day == 4 {
         day4::process(input_lines);
+    } else if args.day == 5 {
+        day5::process(input_lines);
     }
 }
